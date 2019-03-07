@@ -23,7 +23,7 @@
 </head>
 <body>
   <nav>
-    <p class="center" style="font-size: 20px">Fucking Logo Here</p>
+    <!-- <p class="center" style="font-size: 20px">Fucking Logo Here</p> -->
   </nav>
 
   <div class="row" style="padding: 20px 20px 20px 20px">
@@ -33,8 +33,9 @@
         
         <p id="fullName" style="font-size: 18px; margin-bottom: 0px">Full Name Here</p>
         <p id="email" style="font-size: 14px; margin-top: 5px;">Email Here</p>
-        
-        <div style="margin-top: 40px;">
+        <p class="truncate" id="biography" style="font-size: 14px; margin-bottom: 0px; padding-bottom: 0px;"><i>No bio found</i></p>
+
+        <div style="margin-top: 20px;">
           <a href="#!" style="margin-right: 12px">Edit Profile</a>
           <a id="btnLogOut" href="#!" style="color: #ff1744">Log Out</a>
         </div>
@@ -57,11 +58,11 @@
         </div>
       </div>
 
-      <p style="color: silver; font-size: 12px;">Go Social! © 2019</p>
+      <p style="color: silver; font-size: 12px;">© 2019 Go Social!</p>
     </div>
 
-    <div class="col s6">
-      <div class="card" style="height: 120px; margin-top: 160px; border-radius: 10px; padding: 20px 20px 10px 20px">
+    <div class="col s6" style="margin-top: 160px;">
+      <div class="card" style="height: 120px;  border-radius: 10px; padding: 20px 20px 10px 20px">
         <div class="row">
           <div class="input-field col s9">
             <input id="inputTextStatus" type="text" data-length="10">
@@ -83,11 +84,44 @@
       </div>
     </div>
 
-    <div class="col s3">
-
+    <div class="col s3" style="margin-top: 160px;">
+      <!-- <img src="images/hehe.gif" style="margin-top: 160px;"> -->
+      <div class="card" style="padding: 10px 20px 20px 20px;">
+        <p><b>What's trending?</b></p>
+        <a href="#!">#LifeOfShushi</a><br/>
+        <a href="#!">#PengenLulus</a><br/>
+        <a href="#!">#KapanLulus</a><br/>
+        <a href="#!">#Tolong</a><br/>
+        <a href="#!">#KitaSabi.com</a><br/>
+      </div>
     </div>
 
   </div>
+
+  <div id="modalComment" class="modal bottom-sheet">
+    <div class="modal-content">
+      <div class="container">
+        <ul class="collection">
+          <div id="originalPost">
+            <!-- TBA -->
+          </div>
+          <div id="commentsContainer">
+            <!-- TBA -->
+          </div>
+        </ul>
+
+        <div class="divider"></div>
+
+        <form id="formReplyComment">
+          <div class="input-field">
+            <input id="postID" type="hidden" value="">
+            <input autocomplete="off" id="inputTextComment" type="text" placeholder="reply to this post...">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+         
   
 </body>
 

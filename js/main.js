@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems);
+});
+
 $(document).ready(() => {
   $('#btnLogOut').click(() => {
     Swal.fire({
@@ -31,11 +36,10 @@ $(document).ready(() => {
     if (status === '') {
       Swal.fire('Error', 'Status cannot be empty', 'error');
     } else {
-      let currentTimestamp = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
       let data = {
         userID: userID,
         status: status,
-        currentTimestamp: currentTimestamp,
+        currentTimestamp: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'),
       };
 
       $.post('actions/postStatus.php', data, (res) => {
@@ -61,6 +65,34 @@ $(document).ready(() => {
       Swal.fire('Error', 'Cannot be empty!', 'error');
     } else {
       location.href = `visit.php?id=${inputtedUser}`;
+    }
+  });
+
+  $('#formReplyComment').submit((e) => {
+    e.preventDefault();
+
+    let message = $('#inputTextComment')
+      .val()
+      .trim();
+
+    if (message === '') {
+      Swal.fire('Error', 'Cannot be empty!', 'error');
+    } else {
+      let {userID} = JSON.parse(localStorage.getItem('goSocial'));
+
+      let data = {
+        userID: userID,
+        postID: $('#postID').val(),
+        message: message,
+        timestamp: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'),
+      };
+
+      $.post('actions/postComment.php', data, (res) => {
+        let response = JSON.parse(res);
+
+        if (response.status === 'ok') {
+        }
+      });
     }
   });
 
@@ -107,11 +139,98 @@ function fetchUserFeeds() {
           <div class="divider" style="margin-bottom: 12px;"></div>
           <a id="${
             data.postID
-          }" href="#!" style="color: grey"><i class="material-icons" style="font-size: 15px;">comment</i> comment</a>
+          }" onClick="viewComment(this)" href="#!" style="color: grey"><i class="material-icons" style="font-size: 15px;">comment</i> comment</a>
         </div>`;
 
       $('#feedsContainer').append(feedsCard);
     });
+  });
+}
+
+function viewComment(object) {
+  let postID = object.getAttribute('id');
+
+  $.post('actions/fetchSinglePost.php', {postID: postID}, (res) => {
+    let response = JSON.parse(res);
+    let {id, fullname, message, timestamp} = response;
+
+    let item = `
+      <li class="collection-item avatar" style="padding-bottom: 0px;">
+        <img src="images/noImage.png" alt="" class="circle" style="height: 40px; width: 40px;">
+        <span class="title">/${id} (${fullname})</span>
+        <p>${message}</p>
+
+        <p class="secondary-content" style="color: grey">${moment(
+          timestamp,
+        ).fromNow()}</p>
+      </li>
+    `;
+
+    $('#originalPost').html(item);
+  });
+
+  $.post('actions/fetchComment.php', {postID: postID}, (res) => {
+    let response = JSON.parse(res);
+    console.log(response);
+
+    $('#postID').val(postID);
+    $('#commentsContainer').html('');
+    response.forEach((comment) => {
+      let {userID} = JSON.parse(localStorage.getItem('goSocial'));
+      let item;
+      //If same, make delete comment
+      if (userID === comment.id) {
+        item = `
+          <li class="collection-item avatar" style="padding-bottom: 0px;">
+            <img src="images/noImage.png" alt="" class="circle" style="height: 40px; width: 40px;">
+            <span class="title"><a href="visit.php?id=${comment.id}">/${
+          comment.id
+        }</a> (${comment.fullname})</span>
+            <p>${comment.message}</p>
+
+            <a id="${
+              comment.commentID
+            }" onClick="deleteComment(this)" href="#!" style="font-size: 14px; color: #ff1744">delete comment</a>
+
+            <p class="secondary-content" style="color: grey">${moment(
+              comment.timestamp,
+            ).fromNow()}</p>
+          </li>
+        `;
+      } else {
+        item = `
+          <li class="collection-item avatar" style="padding-bottom: 0px;">
+            <img src="images/noImage.png" alt="" class="circle" style="height: 40px; width: 40px;">
+            <span class="title"><a href="visit.php?id=${comment.id}">/${
+          comment.id
+        }</a> (${comment.fullname})</span>
+            <p>${comment.message}</p>
+
+            <p class="secondary-content" style="color: grey">${moment(
+              comment.timestamp,
+            ).fromNow()}</p>
+          </li>
+        `;
+      }
+      $('#commentsContainer').append(item);
+    });
+  });
+
+  let modalComment = M.Modal.getInstance(
+    document.getElementById('modalComment'),
+  );
+  modalComment.open();
+}
+
+function deleteComment(object) {
+  let commentID = object.getAttribute('id');
+
+  $.post('actions/deleteComment.php', {commentID: commentID}, (res) => {
+    let response = JSON.parse(res);
+
+    if (response.status === 'ok') {
+      location.reload();
+    }
   });
 }
 

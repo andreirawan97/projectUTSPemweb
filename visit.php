@@ -37,7 +37,7 @@
         <p id="email" style="font-size: 14px; margin-top: 5px;">Email Here</p>
       </div>
 
-      <p style="color: silver; font-size: 12px;">Go Social! © 2019</p>
+      <p style="color: silver; font-size: 12px;">© 2019 Go Social!</p>
     </div>
 
     <div class="col s6" style="margin-top: 150px;">
@@ -53,10 +53,32 @@
     <div class="col s3">
 
     </div>
-
   </div>
   
-  
+  <div id="modalComment" class="modal bottom-sheet">
+    <div class="modal-content">
+      <div class="container">
+        <ul class="collection">
+          <div id="originalPost">
+            <!-- TBA -->
+          </div>
+          <div id="commentsContainer">
+            <!-- TBA -->
+          </div>
+        </ul>
+
+        <div class="divider"></div>
+
+        <form id="formReplyComment">
+          <div class="input-field">
+            <input id="postID" type="hidden" value="">
+            <input autocomplete="off" id="inputTextComment" type="text" placeholder="reply to this post...">
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
 </body>
 
 <script src="js/visit.js"></script>
