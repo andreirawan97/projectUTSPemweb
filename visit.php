@@ -3,7 +3,7 @@
 <head>
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Visiting...</title>
@@ -15,7 +15,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  
   <!-- SWAL2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
@@ -25,13 +26,12 @@
   <link href="css/color.css" rel="stylesheet">
 </head>
 <body>
-<nav>
-    <p class="center" style="font-size: 20px">Fucking Logo Here</p>
+  <nav>
   </nav>
 
   <div class="row" style="padding: 20px 20px 20px 20px">
     <div class="col s3" style="padding: 20px 30px 30px 30px">
-      <a id="btnGoHome" href="#!" style="margin: 40px 0px 0px 40px"><i class="material-icons" style="color: white; font-size: 30px;">arrow_back</i></a>
+      <a class="btn-floating waves-effect waves-light white" id="btnGoHome" href="#!" style="margin: 0px 0px 0px 40px"><i class="material-icons" style="color: #1976d2; font-size: 30px;">arrow_back</i></a>
 
       <div class="personalInfo card">
         <img src="images/noImage.png" alt="" class="circle" style="height: 100px; width: 100px;">
