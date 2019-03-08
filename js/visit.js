@@ -169,9 +169,13 @@ function viewComment(object) {
 function fetchUserInfo(userID) {
   $.post('actions/fetchUserInfo.php', {userID: userID}, (res) => {
     let response = JSON.parse(res);
-    let {id, email, fullName} = response;
 
-    $('#fullName').html(fullName);
+    if (response.status === 'err') {
+      location.href = 'errorpage.php';
+    }
+
+    let {id, email, fullname} = response;
+    $('#fullName').html(fullname);
     $('#email').html(email);
   });
 }

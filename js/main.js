@@ -254,9 +254,9 @@ function checkIsLogin(isLogin) {
 function fetchUserInfo(userID) {
   $.post('actions/fetchUserInfo.php', {userID: userID}, (res) => {
     let response = JSON.parse(res);
-    let {id, email, fullName} = response;
+    let {id, email, fullname} = response;
 
-    $('#fullName').html(fullName);
+    $('#fullName').html(fullname);
     $('#email').html(email);
   });
 }
