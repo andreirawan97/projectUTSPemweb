@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 08, 2019 at 04:59 AM
+-- Generation Time: Mar 08, 2019 at 05:37 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -32,6 +32,7 @@ CREATE TABLE `account` (
   `id` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
   `fullname` varchar(128) NOT NULL,
+  `gender` varchar(8) NOT NULL,
   `bio` varchar(128) NOT NULL,
   `dateofbirth` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -40,10 +41,10 @@ CREATE TABLE `account` (
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`id`, `email`, `fullname`, `bio`, `dateofbirth`) VALUES
-('admin', 'admin@mail.com', 'admin admin', '', '1945-07-23'),
-('andreirawan97', 'andreirawan97@gmail.com', 'Andre Irawan', '', '1997-07-23'),
-('stany', 'apahayo@gmail.com', 'stany lius', '', '0000-00-00');
+INSERT INTO `account` (`id`, `email`, `fullname`, `gender`, `bio`, `dateofbirth`) VALUES
+('admin', 'admin@mail.com', 'admin admin', 'Female', '', '1945-07-23'),
+('andreirawan97', 'andreirawan97@gmail.com', 'Andre Irawan', 'Male', '', '1997-07-23'),
+('stany', 'apahayo@gmail.com', 'stany lius', 'Male', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
