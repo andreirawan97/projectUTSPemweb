@@ -29,10 +29,10 @@
     }
   }
 
-  function insertToDatabase($inputtedUserID, $inputtedFullName, $inputtedEmail, $inputtedPassword){
+  function insertToDatabase($inputtedUserID, $inputtedFullName, $inputtedEmail, $inputtedPassword, $_, $inputtedDateofbirth){
     include "serverConfig.php";
 
-    $query = "INSERT INTO account VALUES ('$inputtedUserID', '$inputtedEmail', '$inputtedFullName')";
+    $query = "INSERT INTO account VALUES ('$inputtedUserID', '$inputtedEmail', '$inputtedFullName', '$_', '$inputtedDateofbirth')";
     $conn->query($query);
 
     $salt = rand(100, 999);
@@ -49,10 +49,11 @@
   $inputtedFullName = $_POST['inputtedFullName'];
   $inputtedEmail = $_POST['inputtedEmail'];
   $inputtedPassword = $_POST['inputtedPassword'];
+  $inputtedDateofbirth = $_POST['inputtedDateofbirth'];
   $response;
 
   if(!isDuplicateID($inputtedUserID) && !isDuplicateEmail($inputtedEmail)){
-    insertToDatabase($inputtedUserID, $inputtedFullName, $inputtedEmail, $inputtedPassword);
+    insertToDatabase($inputtedUserID, $inputtedFullName, $inputtedEmail, $inputtedPassword, null, $inputtedDateofbirth);
     
     $response = json_encode(array("status" => "ok", "message" => "Signup Succesful!"));
   }

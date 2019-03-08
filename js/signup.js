@@ -1,4 +1,20 @@
+document.addEventListener('DOMContentLoaded', function() {
+  var elemsDatepicker = document.querySelectorAll('.datepicker');
+  var instancesDatepicker = M.Datepicker.init(elemsDatepicker, {
+    format: 'yyyy-mm-dd',
+    yearRange: [1940, 2020],
+  });
+});
+
 $(document).ready(() => {
+  $('#dateofbirth').focus(() => {
+    let instance = M.Datepicker.getInstance(
+      document.getElementById('dateofbirth'),
+    );
+
+    instance.open();
+  });
+
   $('#btn_goToLogin').click(() => {
     location.href = 'login.php';
   });
@@ -21,12 +37,14 @@ $(document).ready(() => {
     let inputtedUserID = $('#userID')
       .val()
       .trim();
+    let inputtedDateofbirth = $('#dateofbirth').val();
 
     if (
       inputtedFirstName === '' ||
       inputtedLastName === '' ||
       inputtedEmail === '' ||
-      inputtedPassword === ''
+      inputtedPassword === '' ||
+      inputtedDateofbirth === ''
     ) {
       Swal.fire('Error', 'Please fill all the form!', 'error');
     } else {
@@ -37,9 +55,11 @@ $(document).ready(() => {
         inputtedUserID: inputtedUserID,
         inputtedEmail: inputtedEmail,
         inputtedPassword: inputtedPassword,
+        inputtedDateofbirth: inputtedDateofbirth,
       };
 
       $.post('actions/signupAction.php', data, (res) => {
+        alert(res);
         let response = JSON.parse(res);
         let {status, message} = response;
 

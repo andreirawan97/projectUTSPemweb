@@ -16,6 +16,7 @@
 
   <!-- SWAL2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 
   <!-- Color Scheme -->
   <link rel="stylesheet" href="css/color.css">
@@ -25,7 +26,7 @@
   <a id="btn_goToLogin" href="#!" style="margin: 40px 0px 0px 40px"><i class="material-icons" style="color: white; font-size: 40px;">arrow_back</i></a>
 
   <div style="display: flex; flex: 1; height: 100vh; justify-content: center; align-items: center">
-    <div style="height: 400px; width: 800px; background-color: white; border-radius: 20px; padding: 40px 80px 40px 80px;">
+    <div style="height: 450px; width: 800px; background-color: white; border-radius: 20px; padding: 40px 80px 40px 80px;">
       
       <form id="formSignup" style="margin-top: 30px;">
         <div class="row">
@@ -52,6 +53,12 @@
             <i class="material-icons prefix" style="color: #1976d2;">lock</i>
             <input id="password" name="password" type="password" class="validate">
             <label for="password">Password</label>
+          </div>
+
+          <div class="input-field col s6">
+            <i class="material-icons prefix" style="color: #1976d2;">date_range</i>
+            <input class="datepicker" id="dateofbirth" name="dateofbirth" type="text">
+            <label for="dateofbirth">Date of Birth</label>
           </div>
         </div>
 

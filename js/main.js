@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.modal');
-  var instances = M.Modal.init(elems);
+  var elemsModal = document.querySelectorAll('.modal');
+  var instancesModal = M.Modal.init(elemsModal);
 });
 
 $(document).ready(() => {

@@ -12,7 +12,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
   <!-- SWAL2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
@@ -23,7 +24,7 @@
 </head>
 <body>
   <nav>
-    <!-- <p class="center" style="font-size: 20px">Fucking Logo Here</p> -->
+    <p class="center" style="font-family: 'Pacifico', cursive; font-size: 45px">Go Social!</p>
   </nav>
 
   <div class="row" style="padding: 20px 20px 20px 20px">
