@@ -8,6 +8,22 @@
   box-shadow: 0 1px 0 0 #1976d2 !important;
 }
 
+[type='radio'].with-gap:checked + label:after {
+  background-color: #ffa500 !important;
+}
+[type='radio'].with-gap:checked + label:before,
+[type='radio'].with-gap:checked + label:after {
+  border: 2px solid #ffa500 !important;
+}
+
+[type='radio']:checked + label:after {
+  background-color: #ffa500 !important;
+}
+[type='radio']:checked + label:before,
+[type='radio']:checked + label:after {
+  border: 2px solid #ffa500 !important;
+}
+
 /* .material-icons:active {
   color: #1976d2 !important;
 } */
