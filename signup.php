@@ -3,7 +3,7 @@
 <head>  
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Go Signup!</title>
@@ -62,6 +62,26 @@
             <i class="material-icons prefix" style="color: #1976d2;">date_range</i>
             <input class="datepicker" id="dateofbirth" name="dateofbirth" type="text">
             <label for="dateofbirth">Date of Birth</label>
+          </div>
+
+          <div class="col s6" style="padding-top: 10px;"> 
+            <div class="col s6">             
+              <p>
+                <label>
+                  <input value="Male" class="with-gap" name="gender" type="radio" checked />
+                  <span>Male</span>
+                </label>
+              </p>
+            </div>
+
+            <div class="col s6">             
+              <p>
+                <label>
+                  <input value="Female" class="with-gap" name="gender" type="radio" />
+                  <span>Female</span>
+                </label>
+              </p>
+            </div>
           </div>
         </div>
 
