@@ -27,7 +27,6 @@
 </head>
 <body>
   <nav>
-    <p class="center" style="font-family: 'Pacifico', cursive; font-size: 45px">Go Social!</p>
   </nav>
 
   <div class="row" style="padding: 20px 20px 20px 20px">
