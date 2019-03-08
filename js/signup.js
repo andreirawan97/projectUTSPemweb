@@ -38,6 +38,7 @@ $(document).ready(() => {
       .val()
       .trim();
     let inputtedDateofbirth = $('#dateofbirth').val();
+    let inputtedGender = $('input[name="gender"]:checked').val();
 
     if (
       inputtedFirstName === '' ||
@@ -56,6 +57,7 @@ $(document).ready(() => {
         inputtedEmail: inputtedEmail,
         inputtedPassword: inputtedPassword,
         inputtedDateofbirth: inputtedDateofbirth,
+        inputtedGender: inputtedGender,
       };
 
       $.post('actions/signupAction.php', data, (res) => {
