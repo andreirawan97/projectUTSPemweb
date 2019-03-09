@@ -1,0 +1,18 @@
+body {
+  background-color: #e6ecef;
+}
+
+nav {
+  z-index: -1;
+  position: absolute;
+  /* background-color: #1976d2; */
+  background-image: url('../images/banner.png');
+  padding: 10px 0px 150px 200px;
+}
+
+.personalInfo {
+  background-color: white;
+  height: 300px;
+  border-radius: 12px;
+  padding: 30px 30px 10px 30px;
+}
