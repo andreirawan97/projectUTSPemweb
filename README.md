@@ -4,6 +4,6 @@ Go Social! adalah sebuah aplikasi web yang dibuat dengan terpaksa.
 
 TODO:
 
-❌ Edit Profile
-❌ Upload profile pic and banner pic
-✅ (Optional) View updated comment in realtime, not refreshing the whole page
+1. ❌ Edit Profile
+2. ❌ Upload profile pic and banner pic
+3. ✅ (Optional) View updated comment in realtime, not refreshing the whole page
