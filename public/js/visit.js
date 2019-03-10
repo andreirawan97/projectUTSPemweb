@@ -140,7 +140,7 @@ function fetchUserFeeds(userID) {
       let fromNow = moment(data.timestamp).fromNow();
 
       let feedsCard = `     
-        <div class="card hoverable" style=" padding: 5px 20px 15px 20px">
+        <div class="card" style=" padding: 5px 20px 15px 20px">
           <div class="row" style="margin-bottom: 0px; padding-bottom: 0px">
             <div class="row col s6 valign-wrapper" style="margin-bottom: 0px;">
               <div class="col s3">

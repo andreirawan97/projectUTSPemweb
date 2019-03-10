@@ -24,6 +24,9 @@
   border: 2px solid #ffa500 !important;
 }
 
+ul.dropdown-content.select-dropdown li span {
+  color: #1976d2; /* no need for !important :) */
+}
 /* .material-icons:active {
   color: #1976d2 !important;
 } */

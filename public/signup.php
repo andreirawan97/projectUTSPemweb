@@ -64,24 +64,12 @@
             <label for="dateofbirth">Date of Birth</label>
           </div>
 
-          <div class="col s6" style="padding-top: 10px;"> 
-            <div class="col s6">             
-              <p>
-                <label>
-                  <input value="Male" class="with-gap" name="gender" type="radio" checked />
-                  <span>Male</span>
-                </label>
-              </p>
-            </div>
-
-            <div class="col s6">             
-              <p>
-                <label>
-                  <input value="Female" class="with-gap" name="gender" type="radio" />
-                  <span>Female</span>
-                </label>
-              </p>
-            </div>
+          <div class="input-field col s6"> 
+            <select id="gender">
+              <option value="Male" style="color: #1976d2" selected>Male</option>
+              <option value="Female"><p style="color: #1976d2">Female</p></option>
+            </select>
+            <label>Gender</label>
           </div>
         </div>
 

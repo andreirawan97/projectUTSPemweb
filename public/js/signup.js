@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     format: 'yyyy-mm-dd',
     yearRange: [1940, 2020],
   });
+  var elemsSelect = document.querySelectorAll('select');
+  var instancesSelect = M.FormSelect.init(elemsSelect);
 });
 
 $(document).ready(() => {
@@ -38,7 +40,10 @@ $(document).ready(() => {
       .val()
       .trim();
     let inputtedDateofbirth = $('#dateofbirth').val();
-    let inputtedGender = $('input[name="gender"]:checked').val();
+    let selectorGender = M.FormSelect.getInstance(
+      document.getElementById('gender'),
+    );
+    let inputtedGender = getSelectedValues(selectorGender);
 
     if (
       inputtedFirstName === '' ||
@@ -84,3 +89,13 @@ $(document).ready(() => {
     }
   });
 });
+
+function getSelectedValues(selectorObject) {
+  let selectorOptions = selectorObject.$selectOptions;
+
+  let selectedOption = selectorOptions.filter(
+    (option) => option.selected === true,
+  );
+
+  return selectedOption[0].value;
+}
