@@ -14,7 +14,7 @@ const server = app.listen(port, (err) => {
 app.use(express.static(__dirname + '/public/'));
 
 // Route Handling
-app.get('/main', (req, res) => {
+app.get('/main.php', (req, res) => {
   fs.readFile('public/main.php', (err, pageRes) => {
     if (err) {
       res.writeHead(404);
@@ -28,8 +28,22 @@ app.get('/main', (req, res) => {
   });
 });
 
-app.get('/login', (req, res) => {
+app.get('/login.php', (req, res) => {
   fs.readFile('public/login.php', (err, pageRes) => {
+    if (err) {
+      res.writeHead(404);
+      res.write('404 Bro');
+    } else {
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write(pageRes);
+    }
+
+    res.end();
+  });
+});
+
+app.get('/actions/loginAction.php', (req, res) => {
+  fs.readFile('public/actions/loginAction.php', (err, pageRes) => {
     if (err) {
       res.writeHead(404);
       res.write('404 Bro');
