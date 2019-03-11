@@ -1,4 +1,4 @@
-#Go Social!
+# Go Social!
 Go Social! adalah sebuah aplikasi web sosial media
 
 TODO:
