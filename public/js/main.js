@@ -36,6 +36,8 @@ $(document).ready(() => {
     if (status === '') {
       Swal.fire('Error', 'Status cannot be empty', 'error');
     } else {
+      let {userID} = JSON.parse(localStorage.getItem('goSocial'));
+
       let data = {
         userID: userID,
         status: status,
@@ -103,6 +105,7 @@ $(document).ready(() => {
     checkIsLogin(isLogin);
     fetchUserInfo(userID);
     fetchUserFeeds();
+    fetchRecentlyRegistered();
   } else {
     Swal.fire({
       title: 'Who are you???!!!!!',
@@ -118,6 +121,20 @@ $(document).ready(() => {
     });
   }
 });
+
+function fetchRecentlyRegistered() {
+  $.get('actions/fetchRecentlyRegistered.php', (res) => {
+    let response = JSON.parse(res);
+
+    response.forEach((obj) => {
+      let {id} = obj;
+
+      $('#exploreUser').append(
+        `<a href="visit.php?id=${id}"><u>/${id}</u></a><br />`,
+      );
+    });
+  });
+}
 
 function fetchUserFeeds() {
   let {userID} = JSON.parse(localStorage.getItem('goSocial'));

@@ -99,6 +99,11 @@
       </div>
 
       <div class="card" style="padding: 10px 20px 20px 20px;">
+        <p><b>Recently registered user</b></p>
+        <div id="exploreUser"></div>
+      </div>
+
+      <div class="card" style="padding: 10px 20px 20px 20px;">
         <p><b>Sponsored</b></p>
         <a href="tetris.html" style="color: green; font-size: 28px;">Play tetris</a><br />
         <a href="https://github.com/jakesgordon/javascript-tetris">Source here</a>

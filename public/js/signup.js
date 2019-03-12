@@ -63,6 +63,7 @@ $(document).ready(() => {
         inputtedPassword: inputtedPassword,
         inputtedDateofbirth: inputtedDateofbirth,
         inputtedGender: inputtedGender,
+        registerDate: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'),
       };
 
       $.post('actions/signupAction.php', data, (res) => {
