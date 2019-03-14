@@ -2,6 +2,7 @@
   include "serverConfig.php";
 
   $userID = $_POST['userID'];
+  //$userID = 'andreirawan97';
   $query = "SELECT * FROM account WHERE id = '$userID'";
 
   $result = $conn->query($query);
