@@ -39,7 +39,7 @@
         <p class="truncate" id="biography" style="font-size: 14px; margin-bottom: 0px; padding-bottom: 0px;"><i>No bio found</i></p>
 
         <div style="margin-top: 20px;">
-          <a href="#!" style="margin-right: 12px">Edit Profile</a>
+          <a href="editprofile.php" style="margin-right: 12px">Edit Profile</a>
           <a id="btnLogOut" href="#!" style="color: #ff1744">Log Out</a>
         </div>
     
