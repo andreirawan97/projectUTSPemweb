@@ -106,6 +106,7 @@ $(document).ready(() => {
     fetchUserInfo(userID);
     fetchUserFeeds();
     fetchRecentlyRegistered();
+    fetchProfilePic();
   } else {
     Swal.fire({
       title: 'Who are you???!!!!!',
@@ -121,6 +122,17 @@ $(document).ready(() => {
     });
   }
 });
+
+function fetchProfilePic() {
+  let {userID} = JSON.parse(localStorage.getItem('goSocial'));
+
+  $.post('actions/fetchUserInfo.php', {userID: userID}, (res) => {
+    let response = JSON.parse(res);
+    let {profilePicURL} = response;
+
+    $('#profilePic').attr('src', profilePicURL);
+  });
+}
 
 function fetchRecentlyRegistered() {
   $.get('actions/fetchRecentlyRegistered.php', (res) => {

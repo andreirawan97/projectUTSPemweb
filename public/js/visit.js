@@ -7,6 +7,7 @@ $(document).ready(() => {
   let userID = getUrlParameter('id');
   fetchUserInfo(userID);
   fetchUserFeeds(userID);
+  fetchProfilePic(userID);
 
   $('#btnGoHome').click(() => {
     location.href = 'main.php';
@@ -41,6 +42,15 @@ $(document).ready(() => {
     }
   });
 });
+
+function fetchProfilePic(userID) {
+  $.post('actions/fetchUserInfo.php', {userID: userID}, (res) => {
+    let response = JSON.parse(res);
+    let {profilePicURL} = response;
+
+    $('#profilePic').attr('src', profilePicURL);
+  });
+}
 
 function refreshComment() {
   let postID = $('#postID').val();

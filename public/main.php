@@ -32,7 +32,7 @@
   <div class="row" style="padding: 20px 20px 20px 20px">
     <div class="col s3" style="padding: 30px 30px 30px 30px">
       <div class="personalInfo card">
-        <img src="images/noImage.png" alt="" class="circle" style="height: 100px; width: 100px;">
+        <img id="profilePic" alt="" class="circle" style="height: 100px; width: 100px;">
         
         <p id="fullName" style="font-size: 18px; margin-bottom: 0px">Full Name Here</p>
         <p id="email" style="font-size: 14px; margin-top: 5px;">Email Here</p>

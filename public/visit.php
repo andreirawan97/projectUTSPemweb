@@ -34,7 +34,7 @@
       <a class="btn-floating waves-effect waves-light white" id="btnGoHome" href="#!" style="margin: 0px 0px 0px 40px"><i class="material-icons" style="color: #1976d2; font-size: 30px;">arrow_back</i></a>
 
       <div class="personalInfo card">
-        <img src="images/noImage.png" alt="" class="circle" style="height: 100px; width: 100px;">
+        <img id="profilePic" alt="" class="circle" style="height: 100px; width: 100px;">
         
         <p id="fullName" style="font-size: 18px; margin-bottom: 0px">Full Name Here</p>
         <p id="email" style="font-size: 14px; margin-top: 5px;">Email Here</p>

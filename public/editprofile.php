@@ -29,7 +29,6 @@
   <div class="row" style="margin-top: 20px;"></div>
   <a id="btn_goToMain" href="main.php" style="margin: 40px 0px 0px 40px"><i class="material-icons" style="color: white; font-size: 40px;">arrow_back</i></a>
 
-    <div class="col s6">
     <div class="container">
 
       <div class="row">
@@ -44,8 +43,9 @@
                   <div class="col s6">
                     <form action="#">
                       <p style="color: grey;">Change Profile Picture</p>
+
                       <div class="file-field input-field">
-                        <div class="btn btn-small">
+                        <div class="btn btn-small" style="background-color: #1976d2">
                           <span>choose file</span>
                           <input id="ppFile" type="file">
                         </div>
@@ -100,24 +100,12 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col s6" style="padding-top: 10px;"> 
-                    <div class="col s6">             
-                      <p>
-                        <label>
-                          <input value="Male" class="with-gap" name="gender" type="radio" checked />
-                          <span>Male</span>
-                        </label>
-                      </p>
-                    </div>
-
-                    <div class="col s6">             
-                      <p>
-                        <label>
-                          <input value="Female" class="with-gap" name="gender" type="radio" />
-                          <span>Female</span>
-                        </label>
-                      </p>
-                    </div>
+                  <div class="input-field col s6"> 
+                    <select id="gender">
+                      <option value="Male" style="color: #1976d2" selected>Male</option>
+                      <option value="Female"><p style="color: #1976d2">Female</p></option>
+                    </select>
+                    <label>Gender</label>
                   </div>
                 </div>
                 
@@ -125,8 +113,23 @@
             </div>
           </div>
         </div>
-      </div>
 
+  <!-- Loading Modal -->
+  <div id="modalLoading" class="modal" style="marginTop: 300">
+    <div class="modal-content" style="text-align: center">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- FAB -->
   <div class="fixed-action-btn">
