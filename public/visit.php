@@ -26,7 +26,7 @@
   <link href="css/color.css" rel="stylesheet">
 </head>
 <body>
-  <nav>
+  <nav id="navbar">
   </nav>
 
   <div class="row" style="padding: 20px 20px 20px 20px">

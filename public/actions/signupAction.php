@@ -32,7 +32,11 @@
   function insertToDatabase($inputtedUserID, $inputtedFullName, $inputtedGender, $inputtedEmail, $inputtedPassword, $_, $inputtedDateofbirth, $registerDate){
     include "serverConfig.php";
 
-    $query = "INSERT INTO account VALUES ('$inputtedUserID', '$inputtedEmail', '$inputtedFullName', '$inputtedGender', '$_', '$inputtedDateofbirth', '$registerDate', 'images/noImage.png')";
+    $query = "INSERT INTO account VALUES ('$inputtedUserID', 
+    '$inputtedEmail', '$inputtedFullName', '$inputtedGender', 
+    '$_', '$inputtedDateofbirth', '$registerDate', 
+    'images/noImage.png', 'images/banner.png')";
+    
     $conn->query($query);
 
     $salt = rand(100, 999);

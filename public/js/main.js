@@ -104,9 +104,10 @@ $(document).ready(() => {
     let {userID, isLogin} = dataLocalStorage;
     checkIsLogin(isLogin);
     fetchUserInfo(userID);
-    fetchUserFeeds();
+    fetchUserFeeds(userID);
     fetchRecentlyRegistered();
-    fetchProfilePic();
+    fetchProfilePic(userID);
+    fetchCoverPic(userID);
   } else {
     Swal.fire({
       title: 'Who are you???!!!!!',
@@ -123,14 +124,21 @@ $(document).ready(() => {
   }
 });
 
-function fetchProfilePic() {
-  let {userID} = JSON.parse(localStorage.getItem('goSocial'));
-
+function fetchProfilePic(userID) {
   $.post('actions/fetchUserInfo.php', {userID: userID}, (res) => {
     let response = JSON.parse(res);
     let {profilePicURL} = response;
 
     $('#profilePic').attr('src', profilePicURL);
+  });
+}
+
+function fetchCoverPic(userID) {
+  $.post('actions/fetchUserInfo.php', {userID: userID}, (res) => {
+    let response = JSON.parse(res);
+    let {coverPicURL} = response;
+
+    $('#navbar').css('background-image', `url('${coverPicURL}')`);
   });
 }
 
@@ -148,9 +156,7 @@ function fetchRecentlyRegistered() {
   });
 }
 
-function fetchUserFeeds() {
-  let {userID} = JSON.parse(localStorage.getItem('goSocial'));
-
+function fetchUserFeeds(userID) {
   $.post('actions/fetchFeeds.php', {userID: userID}, (res) => {
     let response = JSON.parse(res);
 

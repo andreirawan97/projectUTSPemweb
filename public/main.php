@@ -26,7 +26,7 @@
   <link href="css/color.css" rel="stylesheet">
 </head>
 <body>
-  <nav>
+  <nav id="navbar">
   </nav>
 
   <div class="row" style="padding: 20px 20px 20px 20px">
@@ -34,8 +34,8 @@
       <div class="personalInfo card">
         <img id="profilePic" alt="" class="circle" style="height: 100px; width: 100px;">
         
-        <p id="fullName" style="font-size: 18px; margin-bottom: 0px">Full Name Here</p>
-        <p id="email" style="font-size: 14px; margin-top: 5px;">Email Here</p>
+        <p class="truncate" id="fullName" style="font-size: 18px; margin-bottom: 0px">Full Name Here</p>
+        <p class="truncate" id="email" style="font-size: 14px; margin-top: 5px;">Email Here</p>
         <p class="truncate" id="biography" style="font-size: 14px; margin-bottom: 0px; padding-bottom: 0px;"><i>No bio found</i></p>
 
         <div style="margin-top: 20px;">

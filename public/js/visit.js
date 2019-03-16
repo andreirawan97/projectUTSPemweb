@@ -8,6 +8,7 @@ $(document).ready(() => {
   fetchUserInfo(userID);
   fetchUserFeeds(userID);
   fetchProfilePic(userID);
+  fetchCoverPic(userID);
 
   $('#btnGoHome').click(() => {
     location.href = 'main.php';
@@ -49,6 +50,15 @@ function fetchProfilePic(userID) {
     let {profilePicURL} = response;
 
     $('#profilePic').attr('src', profilePicURL);
+  });
+}
+
+function fetchCoverPic(userID) {
+  $.post('actions/fetchUserInfo.php', {userID: userID}, (res) => {
+    let response = JSON.parse(res);
+    let {coverPicURL} = response;
+
+    $('#navbar').css('background-image', `url('${coverPicURL}')`);
   });
 }
 

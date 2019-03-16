@@ -22,12 +22,12 @@ $(document).ready(() => {
     modalLoading.open();
 
     let fileProfilePic = $('#ppFile').get(0).files;
-
-    //If file exist and already selected
+    let fileCoverPic = $('#cpFile').get(0).files;
+    //If files exist and already selected
     if (fileProfilePic.length) {
       // Reject big files
       if (fileProfilePic[0].size > $(this).data('max-size') * 1024) {
-        console.log('Please select a smaller file');
+        Swal.fire('Error!', 'Please select smaller file size!', 'error');
         return false;
       }
 
@@ -50,15 +50,11 @@ $(document).ready(() => {
           }
         });
       });
-    } else {
-      //Do something when no profile pic is chosen
-      modalLoading.close();
     }
   });
 });
 
-function uploadImage(resolve, reject, fileProfilePic) {
-  console.log(fileProfilePic);
+function uploadImage(resolve, reject, file) {
   let url = 'https://api.imgur.com/3/image';
   let clientID = '4689e4a62b06c0f';
   let clientSecret = '109c0adbff19a90cf5e0c5880b61f3dc2d98ec37';
@@ -72,7 +68,7 @@ function uploadImage(resolve, reject, fileProfilePic) {
     processData: false,
     mimeType: 'multipart/form-data',
     contentType: false,
-    data: fileProfilePic[0],
+    data: file[0],
   };
 
   $.ajax(settings).done(function(res) {

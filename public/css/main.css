@@ -5,8 +5,8 @@ body {
 nav {
   z-index: -1;
   position: absolute;
-  /* background-color: #1976d2; */
-  background-image: url('../images/banner.png');
+  background-color: #1976d2;
+  /* background-image: url('../images/banner.png'); */
   padding: 10px 0px 150px 200px;
 }
 

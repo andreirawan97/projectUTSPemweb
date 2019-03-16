@@ -55,7 +55,21 @@
                       </div>
                     </form>
                   </div>
-                  <div class="col s6"></div>
+                  <div class="col s6">
+                    <form action="#">
+                      <p style="color: grey;">Change Cover Picture</p>
+
+                      <div class="file-field input-field">
+                        <div class="btn btn-small" style="background-color: #1976d2">
+                          <span>choose file</span>
+                          <input id="cpFile" type="file">
+                        </div>
+                        <div class="file-path-wrapper">
+                          <input id="cpFileName" class="file-path validate" type="text">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
               <div class="input-field col s6">
