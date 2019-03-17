@@ -24,8 +24,12 @@
   <link href="css/color.css" rel="stylesheet">
 </head>
 <body style="background-color: #1976d2">
+  <div class="navbar-fixed">
+    <nav style="background-color: transparent; box-shadow: none!important;">
+      <div id="loadingBar"></div>
+    </nav>
+  </div>
 
-  <div class="row" style="margin-top: 20px;"></div>
   <a id="btn_goToMain" href="main.php" style="margin: 40px 0px 0px 40px"><i class="material-icons" style="color: white; font-size: 40px;">arrow_back</i></a>
 
     <div class="container">

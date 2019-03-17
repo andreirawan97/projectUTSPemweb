@@ -15,11 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 $(document).ready(() => {
   //On press button FAB
   $('#fabSubmitForm').click(() => {
-    // Invoke loading modal
-    let modalLoading = M.Modal.getInstance(
-      document.getElementById('modalLoading'),
-    );
-    modalLoading.open();
+    showLoadingBar();
 
     let fileProfilePic = $('#ppFile').get(0).files;
     let fileCoverPic = $('#cpFile').get(0).files;
@@ -57,7 +53,8 @@ $(document).ready(() => {
             let response = JSON.parse(res);
 
             if (response.status === 'ok') {
-              modalLoading.close();
+              hideLoadingBar();
+
               Swal.fire({
                 title: 'Success!',
                 text: 'Profile has been updated!',
@@ -94,7 +91,7 @@ $(document).ready(() => {
             let response = JSON.parse(res);
 
             if (response.status === 'ok') {
-              modalLoading.close();
+              hideLoadingBar();
               Swal.fire({
                 title: 'Success!',
                 text: 'Profile has been updated!',
@@ -130,7 +127,7 @@ $(document).ready(() => {
             let response = JSON.parse(res);
 
             if (response.status === 'ok') {
-              modalLoading.close();
+              hideLoadingBar();
               Swal.fire({
                 title: 'Success!',
                 text: 'Profile has been updated!',
@@ -150,6 +147,19 @@ $(document).ready(() => {
     }
   });
 });
+
+function showLoadingBar() {
+  let loadingBar = `
+  <div class="progress" style="margin-top: 0px; height: 5px;">
+    <div class="indeterminate"></div>
+  </div>`;
+
+  $('#loadingBar').html(loadingBar);
+}
+
+function hideLoadingBar() {
+  $('#loadingBar').html('');
+}
 
 function uploadImage(resolve, reject, file) {
   let url = 'https://api.imgur.com/3/image';
