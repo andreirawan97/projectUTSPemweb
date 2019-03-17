@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 15, 2019 at 08:23 AM
+-- Generation Time: Mar 17, 2019 at 05:33 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -36,18 +36,20 @@ CREATE TABLE `account` (
   `bio` varchar(128) NOT NULL,
   `dateofbirth` date NOT NULL,
   `registerDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `profilePicURL` varchar(128) DEFAULT NULL
+  `profilePicURL` varchar(128) DEFAULT NULL,
+  `coverPicURL` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`id`, `email`, `fullname`, `gender`, `bio`, `dateofbirth`, `registerDate`, `profilePicURL`) VALUES
-('admin', 'admin@mail.com', 'admin admin', 'Female', '', '1945-07-23', '2019-03-15 07:14:59', 'images/noImage.png'),
-('andreirawan97', 'andreirawan97@gmail.com', 'Andre Irawan', 'Male', '', '1997-07-23', '2019-03-15 07:09:08', 'https://i.imgur.com/rJBBTOz.jpg'),
-('Habib', 'hala@gmail.com', 'Rifky Nur', 'Male', '', '1999-08-09', '2019-03-15 07:14:59', 'images/noImage.png'),
-('stany', 'apahayo@gmail.com', 'stany lius', 'Male', '', '0000-00-00', '2019-03-15 07:16:01', 'https://i.imgur.com/hp4gqKu.jpg');
+INSERT INTO `account` (`id`, `email`, `fullname`, `gender`, `bio`, `dateofbirth`, `registerDate`, `profilePicURL`, `coverPicURL`) VALUES
+('admin', 'admin@mail.com', 'admin admin', 'Female', '', '1945-07-23', '2019-03-15 07:32:36', 'images/noImage.png', 'images/banner.png'),
+('andreirawan97', 'andreirawan97@gmail.com', 'Andre Irawan', 'Male', '', '1997-07-23', '2019-03-15 07:51:36', 'https://i.imgur.com/wbtwn3G.jpg', 'images/banner.png'),
+('Habib', 'hala@gmail.com', 'Rifky Nur', 'Male', '', '1999-08-09', '2019-03-15 07:32:36', 'images/noImage.png', 'images/banner.png'),
+('richardindra', 'richard.indra@student.umn.ac.id', 'Richard Indra', 'Male', '', '1997-02-03', '2019-03-15 07:32:36', 'images/noImage.png', 'images/banner.png'),
+('stany', 'apahayo@gmail.com', 'stany lius', 'Male', '', '0000-00-00', '2019-03-15 07:32:36', 'https://i.imgur.com/hp4gqKu.jpg', 'images/banner.png');
 
 -- --------------------------------------------------------
 
@@ -119,6 +121,7 @@ INSERT INTO `secret` (`id`, `password`, `salt`) VALUES
 ('admin', '0a7754b6adc7e0b8b448a5cfdce6da87', 191),
 ('andreirawan97', '0192023a7bbd73250516f069df18b500', 123),
 ('Habib', 'bacbea480197d9b847780a9adc7d6718', 229),
+('richardindra', 'c4309933bd58cc571b488eeabd119b06', 281),
 ('stany', '7d4ce407cd81a62d431e806d7d50831a', 538);
 
 --

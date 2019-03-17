@@ -105,9 +105,9 @@ $(document).ready(() => {
     checkIsLogin(isLogin);
     fetchUserInfo(userID);
     fetchUserFeeds(userID);
-    fetchRecentlyRegistered();
     fetchProfilePic(userID);
     fetchCoverPic(userID);
+    fetchRecentlyRegistered();
   } else {
     Swal.fire({
       title: 'Who are you???!!!!!',
@@ -138,6 +138,7 @@ function fetchCoverPic(userID) {
     let response = JSON.parse(res);
     let {coverPicURL} = response;
 
+    console.log(response);
     $('#navbar').css('background-image', `url('${coverPicURL}')`);
   });
 }
@@ -170,10 +171,7 @@ function fetchUserFeeds(userID) {
         <div class="card" style=" padding: 5px 20px 15px 20px">
           <div class="row" style="margin-bottom: 0px; padding-bottom: 0px">
             <div class="row col s6 valign-wrapper" style="margin-bottom: 0px;">
-              <div class="col s3">
-                <img src="images/noImage.png" alt="" class="circle" style="height: 40px; width: 40px;">      
-              </div>
-              <div class="col s9">
+              <div class="col s12">
                 <p style="font-size: 20px">${data.fullName}</p>
               </div>
             </div>
@@ -212,7 +210,6 @@ function fetchComment(postID) {
 
     let item = `
       <li class="collection-item avatar" style="padding-bottom: 0px;">
-        <img src="images/noImage.png" alt="" class="circle" style="height: 40px; width: 40px;">
         <span class="title">/${id} (${fullname})</span>
         <p>${message}</p>
 
@@ -238,7 +235,6 @@ function fetchComment(postID) {
       if (userID === comment.id) {
         item = `
           <li class="collection-item avatar" style="padding-bottom: 0px;">
-            <img src="images/noImage.png" alt="" class="circle" style="height: 40px; width: 40px;">
             <span class="title"><a href="visit.php?id=${comment.id}">/${
           comment.id
         }</a> (${comment.fullname})</span>
@@ -256,7 +252,6 @@ function fetchComment(postID) {
       } else {
         item = `
           <li class="collection-item avatar" style="padding-bottom: 0px;">
-            <img src="images/noImage.png" alt="" class="circle" style="height: 40px; width: 40px;">
             <span class="title"><a href="visit.php?id=${comment.id}">/${
           comment.id
         }</a> (${comment.fullname})</span>

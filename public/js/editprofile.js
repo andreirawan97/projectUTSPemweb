@@ -24,32 +24,96 @@ $(document).ready(() => {
     let fileProfilePic = $('#ppFile').get(0).files;
     let fileCoverPic = $('#cpFile').get(0).files;
     //If files exist and already selected
-    if (fileProfilePic.length) {
-      // Reject big files
-      if (fileProfilePic[0].size > $(this).data('max-size') * 1024) {
-        Swal.fire('Error!', 'Please select smaller file size!', 'error');
-        return false;
-      }
+    if (fileProfilePic.length || fileCoverPic.length) {
+      if (fileProfilePic.length && fileCoverPic.length) {
+        // Reject big files
+        if (fileProfilePic[0].size > $(this).data('max-size') * 1024) {
+          Swal.fire('Error!', 'Please select smaller file size!', 'error');
+          return false;
+        }
+        if (fileCoverPic[0].size > $(this).data('max-size') * 1024) {
+          Swal.fire('Error!', 'Please select smaller file size!', 'error');
+          return false;
+        }
 
-      new Promise((resolve, reject) => {
-        uploadImage(resolve, reject, fileProfilePic);
-      }).then((result) => {
-        //Update to DB
-        let {userID} = JSON.parse(localStorage.getItem('goSocial'));
-        let data = {
-          userID: userID,
-          profilePicURL: result,
-        };
-
-        $.post('actions/updateUserInfo.php', data, (res) => {
-          let response = JSON.parse(res);
-
-          if (response.status === 'ok') {
-            modalLoading.close();
-            Swal.fire('Success!', 'Profile has been updated!', 'success');
-          }
+        let promiseProfilePic = new Promise((resolve, reject) => {
+          uploadImage(resolve, reject, fileProfilePic);
         });
-      });
+
+        let promiseCoverPic = new Promise((resolve, reject) => {
+          uploadImage(resolve, reject, fileCoverPic);
+        });
+
+        Promise.all([promiseProfilePic, promiseCoverPic]).then((result) => {
+          //Update to DB
+          let {userID} = JSON.parse(localStorage.getItem('goSocial'));
+          let data = {
+            userID: userID,
+            profilePicURL: result[0],
+            coverPicURL: result[1],
+          };
+
+          $.post('actions/updateUserInfo.php?type=all', data, (res) => {
+            let response = JSON.parse(res);
+
+            if (response.status === 'ok') {
+              modalLoading.close();
+              Swal.fire('Success!', 'Profile has been updated!', 'success');
+            }
+          });
+        });
+      } else if (fileProfilePic.length) {
+        // Reject big files
+        if (fileProfilePic[0].size > $(this).data('max-size') * 1024) {
+          Swal.fire('Error!', 'Please select smaller file size!', 'error');
+          return false;
+        }
+
+        new Promise((resolve, reject) => {
+          uploadImage(resolve, reject, fileProfilePic);
+        }).then((result) => {
+          //Update to DB
+          let {userID} = JSON.parse(localStorage.getItem('goSocial'));
+          let data = {
+            userID: userID,
+            profilePicURL: result,
+          };
+
+          $.post('actions/updateUserInfo.php?type=profilePic', data, (res) => {
+            let response = JSON.parse(res);
+
+            if (response.status === 'ok') {
+              modalLoading.close();
+              Swal.fire('Success!', 'Profile has been updated!', 'success');
+            }
+          });
+        });
+      } else if (fileCoverPic.length) {
+        if (fileCoverPic[0].size > $(this).data('max-size') * 1024) {
+          Swal.fire('Error!', 'Please select smaller file size!', 'error');
+          return false;
+        }
+
+        new Promise((resolve, reject) => {
+          uploadImage(resolve, reject, fileCoverPic);
+        }).then((result) => {
+          //Update to DB
+          let {userID} = JSON.parse(localStorage.getItem('goSocial'));
+          let data = {
+            userID: userID,
+            coverPicURL: result,
+          };
+
+          $.post('actions/updateUserInfo.php?type=coverPic', data, (res) => {
+            let response = JSON.parse(res);
+
+            if (response.status === 'ok') {
+              modalLoading.close();
+              Swal.fire('Success!', 'Profile has been updated!', 'success');
+            }
+          });
+        });
+      }
     }
   });
 });

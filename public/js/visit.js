@@ -76,7 +76,6 @@ function fetchComment(postID) {
 
     let item = `
       <li class="collection-item avatar" style="padding-bottom: 0px;">
-        <img src="images/noImage.png" alt="" class="circle" style="height: 40px; width: 40px;">
         <span class="title">/${id} (${fullname})</span>
         <p>${message}</p>
 
@@ -102,7 +101,6 @@ function fetchComment(postID) {
       if (userID === comment.id) {
         item = `
           <li class="collection-item avatar" style="padding-bottom: 0px;">
-            <img src="images/noImage.png" alt="" class="circle" style="height: 40px; width: 40px;">
             <span class="title"><a href="visit.php?id=${comment.id}">/${
           comment.id
         }</a> (${comment.fullname})</span>
@@ -156,6 +154,12 @@ function fetchUserFeeds(userID) {
     // Reset the container
     $('#feedsContainer').html('');
 
+    if (!response.length) {
+      $('#feedsContainer').html(
+        '<p style="text-align: center; color: grey;">No Feeds</p>',
+      );
+    }
+
     response.forEach((data) => {
       let fromNow = moment(data.timestamp).fromNow();
 
@@ -163,10 +167,7 @@ function fetchUserFeeds(userID) {
         <div class="card" style=" padding: 5px 20px 15px 20px">
           <div class="row" style="margin-bottom: 0px; padding-bottom: 0px">
             <div class="row col s6 valign-wrapper" style="margin-bottom: 0px;">
-              <div class="col s3">
-                <img src="images/noImage.png" alt="" class="circle" style="height: 40px; width: 40px;">      
-              </div>
-              <div class="col s9">
+              <div class="col s12">
                 <p style="font-size: 20px">${data.fullName}</p>
               </div>
             </div>
