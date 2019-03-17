@@ -58,7 +58,18 @@ $(document).ready(() => {
 
             if (response.status === 'ok') {
               modalLoading.close();
-              Swal.fire('Success!', 'Profile has been updated!', 'success');
+              Swal.fire({
+                title: 'Success!',
+                text: 'Profile has been updated!',
+                type: 'success',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Confirm',
+              }).then((result) => {
+                if (result.value) {
+                  location.href = 'main.php';
+                }
+              });
             }
           });
         });
@@ -84,7 +95,18 @@ $(document).ready(() => {
 
             if (response.status === 'ok') {
               modalLoading.close();
-              Swal.fire('Success!', 'Profile has been updated!', 'success');
+              Swal.fire({
+                title: 'Success!',
+                text: 'Profile has been updated!',
+                type: 'success',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Confirm',
+              }).then((result) => {
+                if (result.value) {
+                  location.href = 'main.php';
+                }
+              });
             }
           });
         });
@@ -109,7 +131,18 @@ $(document).ready(() => {
 
             if (response.status === 'ok') {
               modalLoading.close();
-              Swal.fire('Success!', 'Profile has been updated!', 'success');
+              Swal.fire({
+                title: 'Success!',
+                text: 'Profile has been updated!',
+                type: 'success',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Confirm',
+              }).then((result) => {
+                if (result.value) {
+                  location.href = 'main.php';
+                }
+              });
             }
           });
         });

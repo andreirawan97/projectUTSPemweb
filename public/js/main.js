@@ -50,7 +50,7 @@ $(document).ready(() => {
 
         if (status === 'ok') {
           $('#inputTextStatus').val('');
-          fetchUserFeeds();
+          fetchUserFeeds(userID);
         }
       });
     }
@@ -328,13 +328,14 @@ function deletePost(object) {
     confirmButtonText: 'YES!!!',
   }).then((result) => {
     if (result.value) {
+      let {userID} = JSON.parse(localStorage.getItem('goSocial'));
       let postID = object.getAttribute('id');
 
       $.post('actions/deleteStatus.php', {postID: postID}, (res) => {
         let response = JSON.parse(res);
 
         if (response.status === 'ok') {
-          fetchUserFeeds();
+          fetchUserFeeds(userID);
         }
       });
     }

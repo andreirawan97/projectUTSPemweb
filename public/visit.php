@@ -35,8 +35,8 @@
       <div class="personalInfo card">
         <img id="profilePic" alt="" class="circle" style="height: 100px; width: 100px;">
         
-        <p id="fullName" style="font-size: 18px; margin-bottom: 0px">Full Name Here</p>
-        <p id="email" style="font-size: 14px; margin-top: 5px;">Email Here</p>
+        <p class="truncate" id="fullName" style="font-size: 18px; margin-bottom: 0px">Full Name Here</p>
+        <p class="truncate" id="email" style="font-size: 14px; margin-top: 5px;">Email Here</p>
       </div>
 
       <p style="color: silver; font-size: 12px;">© 2019 Go Social!</p>
