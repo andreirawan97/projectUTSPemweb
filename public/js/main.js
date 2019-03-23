@@ -204,6 +204,9 @@ function refreshComment() {
 }
 
 function fetchComment(postID) {
+  $('#originalPost').html('');
+  $('#commentsContainer').html('');
+
   $.post('actions/fetchSinglePost.php', {postID: postID}, (res) => {
     let response = JSON.parse(res);
     let {id, fullname, message, timestamp} = response;
@@ -227,7 +230,6 @@ function fetchComment(postID) {
     console.log(response);
 
     $('#postID').val(postID);
-    $('#commentsContainer').html('');
     response.forEach((comment) => {
       let {userID} = JSON.parse(localStorage.getItem('goSocial'));
       let item;
@@ -311,10 +313,16 @@ function checkIsLogin(isLogin) {
 function fetchUserInfo(userID) {
   $.post('actions/fetchUserInfo.php', {userID: userID}, (res) => {
     let response = JSON.parse(res);
-    let {id, email, fullname} = response;
+    let {id, email, fullname, bio} = response;
 
     $('#fullName').html(fullname);
     $('#email').html(email);
+
+    if (bio === '') {
+      $('#biography').html('<i>No bio found</i>');
+    } else {
+      $('#biography').html(`<i>${bio}<i>`);
+    }
   });
 }
 

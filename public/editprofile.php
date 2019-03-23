@@ -76,21 +76,20 @@
                 </div>
               </div>
               <div class="input-field col s6">
-                <i class="material-icons prefix" style="color: #1976d2;">edit</i>
+                <i class="material-icons prefix" style="color: #1976d2;">person</i>
                 <input id="firstName" name="firstName" type="text">
-                <label for="firstName">First Name</label>
+                <label class="active" for="firstName">First Name</label>
               </div>
               <div class="input-field col s6">
-                <i class="material-icons prefix" style="color: #1976d2;">edit</i>
                 <input id="lastName" name="lastName" type="text">
-                <label for="lastName">Last Name</label>
+                <label class="active" for="lastName">Last Name</label>
               </div>
             </div>
             <div class="row">
-              <div class="input-field col s8">
+              <div class="input-field col s12">
                 <i class="material-icons prefix" style="color: #1976d2;">edit</i>
                 <input id="biography" name="biography" type="text" class="truncate">
-                <label for="biography">Bio</label>
+                <label class="active" for="biography">Bio</label>
               </div>
             </div>
           </form>
@@ -106,14 +105,14 @@
                   <div class="input-field col s6">
                     <i class="material-icons prefix" style="color: #1976d2;">email</i>
                     <input id="email" name="email" type="email" class="validate">
-                    <label for="email">Email</label>
+                    <label class="active" for="email">Email</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s6">
                     <i class="material-icons prefix" style="color: #1976d2;">date_range</i>
                     <input class="datepicker" id="dateofbirth" name="dateofbirth" type="text">
-                    <label for="dateofbirth">Date of Birth</label>
+                    <label class="active" for="dateofbirth">Date of Birth</label>
                   </div>
                 </div>
                 <div class="row">
@@ -131,22 +130,6 @@
           </div>
         </div>
 
-  <!-- Loading Modal -->
-  <div id="modalLoading" class="modal" style="marginTop: 300">
-    <div class="modal-content" style="text-align: center">
-      <div class="preloader-wrapper big active">
-        <div class="spinner-layer spinner-blue-only">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div><div class="gap-patch">
-            <div class="circle"></div>
-          </div><div class="circle-clipper right">
-            <div class="circle"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- FAB -->
   <div class="fixed-action-btn">

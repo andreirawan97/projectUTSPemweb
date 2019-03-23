@@ -4,21 +4,40 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.modal');
-  var instances = M.Modal.init(elems, {
-    dismissible: false,
-  });
   var elemsSelect = document.querySelectorAll('select');
   var instancesSelect = M.FormSelect.init(elemsSelect);
+  var elemsDatepicker = document.querySelectorAll('.datepicker');
+  var instancesDatepicker = M.Datepicker.init(elemsDatepicker);
 });
 
 $(document).ready(() => {
+  showLoadingBar();
+  let {userID} = JSON.parse(localStorage.getItem('goSocial'));
+  fetchUserInfo(userID);
+
   //On press button FAB
   $('#fabSubmitForm').click(() => {
     showLoadingBar();
 
     let fileProfilePic = $('#ppFile').get(0).files;
     let fileCoverPic = $('#cpFile').get(0).files;
+    let firstname = $('#firstName').val();
+    let lastname = $('#lastName').val();
+    let fullname = `${firstname} ${lastname}`;
+    let bio = $('#biography').val();
+    let email = $('#email').val();
+    let dateofbirth = $('#dateofbirth').val();
+    let selectorGender = M.FormSelect.getInstance(
+      document.getElementById('gender'),
+    );
+    let gender = getSelectedValues(selectorGender);
+
+    if (checkEmptyField(firstname.trim(), lastname.trim(), email.trim())) {
+      Swal.fire('Error!', 'Field cannot be empty!', 'error');
+      hideLoadingBar();
+      return;
+    }
+
     //If files exist and already selected
     if (fileProfilePic.length || fileCoverPic.length) {
       if (fileProfilePic.length && fileCoverPic.length) {
@@ -47,6 +66,11 @@ $(document).ready(() => {
             userID: userID,
             profilePicURL: result[0],
             coverPicURL: result[1],
+            fullname: fullname,
+            bio: bio,
+            email: email,
+            dateofbirth: dateofbirth,
+            gender: gender,
           };
 
           $.post('actions/updateUserInfo.php?type=all', data, (res) => {
@@ -85,6 +109,11 @@ $(document).ready(() => {
           let data = {
             userID: userID,
             profilePicURL: result,
+            fullname: fullname,
+            bio: bio,
+            email: email,
+            dateofbirth: dateofbirth,
+            gender: gender,
           };
 
           $.post('actions/updateUserInfo.php?type=profilePic', data, (res) => {
@@ -121,6 +150,11 @@ $(document).ready(() => {
           let data = {
             userID: userID,
             coverPicURL: result,
+            fullname: fullname,
+            bio: bio,
+            email: email,
+            dateofbirth: dateofbirth,
+            gender: gender,
           };
 
           $.post('actions/updateUserInfo.php?type=coverPic', data, (res) => {
@@ -144,9 +178,54 @@ $(document).ready(() => {
           });
         });
       }
+    } else {
+      let data = {
+        userID: userID,
+        fullname: fullname,
+        bio: bio,
+        email: email,
+        dateofbirth: dateofbirth,
+        gender: gender,
+      };
+
+      $.post('actions/updateUserInfo.php?type=info', data, (res) => {
+        let response = JSON.parse(res);
+
+        if (response.status === 'ok') {
+          hideLoadingBar();
+        }
+      });
     }
   });
 });
+
+function checkEmptyField(firstname, lastname, email) {
+  if (firstname === '' || lastname === '' || email === '') {
+    return true;
+  }
+
+  return false;
+}
+
+function fetchUserInfo(userID) {
+  $.post('actions/fetchUserInfo.php', {userID: userID}, (res) => {
+    let response = JSON.parse(res);
+
+    let {fullname, bio, email, dateofbirth, gender} = response;
+
+    let name = fullname.split(' ');
+    let firstname = name[0];
+    let lastname = name[1];
+
+    $('#firstName').val(firstname);
+    $('#lastName').val(lastname);
+    $('#biography').val(bio);
+    $('#email').val(email);
+    $('#dateofbirth').val(dateofbirth);
+    M.updateTextFields();
+    hideLoadingBar();
+  });
+}
 
 function showLoadingBar() {
   let loadingBar = `
@@ -187,4 +266,14 @@ function uploadImage(resolve, reject, file) {
 
     resolve(link);
   });
+}
+
+function getSelectedValues(selectorObject) {
+  let selectorOptions = selectorObject.$selectOptions;
+
+  let selectedOption = selectorOptions.filter(
+    (option) => option.selected === true,
+  );
+
+  return selectedOption[0].value;
 }

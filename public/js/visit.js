@@ -206,9 +206,15 @@ function fetchUserInfo(userID) {
       location.href = 'errorpage.php';
     }
 
-    let {id, email, fullname} = response;
+    let {id, email, fullname, bio} = response;
     $('#fullName').html(fullname);
     $('#email').html(email);
+
+    if (bio === '') {
+      $('#biography').html('<i>No bio found</i>');
+    } else {
+      $('#biography').html(`<i>${bio}</i>`);
+    }
   });
 }
 
