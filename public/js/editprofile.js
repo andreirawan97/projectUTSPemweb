@@ -4,8 +4,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-  var elemsSelect = document.querySelectorAll('select');
-  var instancesSelect = M.FormSelect.init(elemsSelect);
   var elemsDatepicker = document.querySelectorAll('.datepicker');
   var instancesDatepicker = M.Datepicker.init(elemsDatepicker);
 });
@@ -31,6 +29,7 @@ $(document).ready(() => {
       document.getElementById('gender'),
     );
     let gender = getSelectedValues(selectorGender);
+    console.log(gender);
 
     if (checkEmptyField(firstname.trim(), lastname.trim(), email.trim())) {
       Swal.fire('Error!', 'Field cannot be empty!', 'error');
@@ -193,6 +192,18 @@ $(document).ready(() => {
 
         if (response.status === 'ok') {
           hideLoadingBar();
+          Swal.fire({
+            title: 'Success!',
+            text: 'Profile has been updated!',
+            type: 'success',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Confirm',
+          }).then((result) => {
+            if (result.value) {
+              location.href = 'main.php';
+            }
+          });
         }
       });
     }
@@ -222,6 +233,9 @@ function fetchUserInfo(userID) {
     $('#biography').val(bio);
     $('#email').val(email);
     $('#dateofbirth').val(dateofbirth);
+    $('#gender').val(gender);
+    var elemsSelect = document.querySelectorAll('select');
+    var instancesSelect = M.FormSelect.init(elemsSelect);
     M.updateTextFields();
     hideLoadingBar();
   });
